@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Dumboo!</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Fredoka+One&display=swap');
+
+        body {
+            font-family: 'Fredoka One', cursive;
+            text-align: center;
+            color: #333;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .waves {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, #a18cd1 0%, #fbc2eb 100%);
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .wave {
+            position: absolute;
+            bottom: 0;
+            width: 200%;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.5);
+            opacity: 0.7;
+            animation: moveWaves 10s infinite linear;
+        }
+
+        .wave:nth-child(2) {
+            bottom: 10px;
+            animation: moveWaves 18s infinite linear;
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .wave:nth-child(3) {
+            bottom: 15px;
+            animation: moveWaves 25s infinite linear;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        @keyframes moveWaves {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        header {
+            background-color: #ff6b6b;
+            padding: 20px;
+            font-size: 4em;
+            color: white;
+            animation: fadeInDown 1s ease-in-out;
+            font-family: 'Pacifico', cursive;
+        }
+
+        .animated-text {
+            font-size: 2.5em;
+            margin-top: 20px;
+            animation: bounce 2s infinite;
+            color: #ff9ff3;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-30px); }
+            60% { transform: translateY(-15px); }
+        }
+
+        .cake {
+            width: 200px;
+            margin: 20px auto;
+            position: relative;
+            animation: zoomIn 1s ease-in-out;
+            font-size: 5em;
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        footer {
+            background-color: #1dd1a1;
+            padding: 10px;
+            color: white;
+            font-size: 2em;
+            animation: slideInUp 1s ease-in-out;
+        }
+
+        @keyframes fadeInDown {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes slideInUp {
+            from { transform: translateY(100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .confetti {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .rotating-element {
+            display: inline-block;
+            animation: rotate 4s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .funny-message {
+            font-size: 1.5em;
+            margin-top: 20px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="waves">
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+    </div>
+    <header>Happy Birthday Dumboo!</header>
+    <main>
+        <div class="animated-text rotating-element">Happy Birthday Dumboo!</div>
+        <div class="cake rotating-element">
+            🍰
+        </div>
+        <div class="funny-message">
+            You're another year older but definitely not any wiser!
+        </div>
+    </main>
+    <footer>Have a Dum-tastic Birthday!</footer>
+    <div class="confetti"></div>
+    <script>
+        // Generate confetti pieces
+        for (let i = 0; i < 100; i++) {
+            let confettiPiece = document.createElement('div');
+            confettiPiece.className = 'confetti-piece';
+            confettiPiece.style.left = `${Math.random() * 100}%`;
+            confettiPiece.style.animationDuration = `${Math.random() * 3 + 2}s`;
+            confettiPiece.style.animationDelay = `${Math.random() * 5}s`;
+            document.body.appendChild(confettiPiece);
+        }
+    </script>
+</body>
+</html>
