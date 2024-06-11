@@ -3,32 +3,78 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happy Birthday Dumbo!</title>
+  <title>Happy Birthday, Dumbo!</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="w-container">
-    <header>
-      <h1>Happy Birthday, Dumbo!</h1>
-      <p>We hope you have a fantastic day!</p>
-    </header>
-    <main>
-      <img src="dumbo-birthday.jpg" alt="Image of Dumbo celebrating birthday">
-      <p>Dear Dumbo,</p>
-      <p>We're writing to wish you a very happy birthday! We hope you have a day filled with joy, laughter, and all your favorite things. You bring so much happiness to everyone around you, and we wish you all the best on this special day.</p>
-      <p>May the year ahead be filled with wonderful surprises and exciting adventures. We can't wait to celebrate many more birthdays with you!</p>
-      <ul>
-        <li>Wishing you a day as wonderful as you are!</li>
-        <li>May all your birthday wishes come true!</li>
-        <li>Sending you lots of love and birthday cheer!</li>
-      </ul>
-      <button>Send Birthday Wishes!</button>
-      <form action="/send-wishes" method="post">
-        <label for="message">Write your own message:</label>
-        <textarea id="message" name="message" rows="5"></textarea>
-        <button type="submit">Send Wishes to Dumbo</button>
-      </form>
-    </main>
+  <div class="container">
+    <h1 class="title">Happy Birthday,<br>Dumbo!</h1>
+    <img src="dumbo.gif" alt="Dumbo flying with a feather" class="dumbo-gif" id="dumbo">
+    <p class="message">Wishing you a day filled with joy, laughter, and adventures as big as your dreams!</p>
+    <div class="bubbles">
+      <span class="bubble" data-text="Pop me!"></span>
+      <span class="bubble" data-text="Happy Birthday!"></span>
+      <span class="bubble" data-text="Let's fly!"></span>
+    </div>
   </div>
+  
+  <script>
+    const title = document.querySelector('.title');
+    const message = document.querySelector('.message');
+    const dumbo = document.getElementById('dumbo');
+    const bubbles = document.querySelectorAll('.bubble');
+
+    // Animate the title with a bouncing effect
+    title.style.animation = 'bounce 1.5s infinite alternate ease-in-out';
+
+    // Animate the message with a subtle typing effect
+    const messageText = message.textContent;
+    let charIndex = 0;
+
+    const typeWriter = setInterval(() => {
+      if (charIndex < messageText.length) {
+        message.textContent += messageText.charAt(charIndex);
+        charIndex++;
+      } else {
+        clearInterval(typeWriter);
+      }
+    }, 50);
+
+    // Confetti animation (using external library)
+    const confetti = new Confetti();
+    confetti.release({ count: 200, size: 2, origin: { x: 0.5, y: 0.8 } });
+
+    // Handle bubble clicks
+    bubbles.forEach(bubble => {
+      bubble.addEventListener('click', () => {
+        confetti.release({ count: 50, size: 1 });
+        bubble.textContent = bubble.dataset.text;
+      });
+    });
+
+    // User-controlled Dumbo movement (basic example)
+    let isDragging = false;
+    let initialX = 0;
+    let initialY = 0;
+
+    dumbo.addEventListener('mousedown', (event) => {
+      isDragging = true;
+      initialX = event.clientX - dumbo.offsetLeft;
+      initialY = event.clientY - dumbo.offsetTop;
+    });
+
+    document.addEventListener('mouseup', () => {
+      isDragging = false;
+    });
+
+    document.addEventListener('mousemove', (event) => {
+      if (isDragging) {
+        const newX = event.clientX - initialX;
+        const newY = event.clientY - initialY;
+        dumbo.style.left = `${newX}px`;
+        dumbo.style.top = `${newY}px`;
+      }
+    });
+  </script>
 </body>
 </html>

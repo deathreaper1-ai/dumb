@@ -1,113 +1,26 @@
-/* Reset and Base Styles */
-
-* {
-  box-sizing: border-box;
+body {
+  font-family: sans-serif;
   margin: 0;
   padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #007bff, #00c7ff); /* Aquarium background gradient */
+  animation: background-wave 5s ease-in-out infinite; /* Animate background gradient */
+  font-size: 8vw; /* Set font size based on viewport width */
 }
 
-body {
-  font-family: Arial, sans-serif;
-  font-size: 16px;
-  line-height: 1.5;
+@keyframes background-wave {
+  0% { background-position: 0 0; }
+  50% { background-position: 100px 0; }
+  100% { background-position: 0 0; }
 }
 
-/* Headings */
-
-h1, h2, h3, h4, h5, h6 {
-  margin: 1em 0;
-}
-
-h1 {
-  font-size: 2em;
-}
-
-/* Paragraphs */
-
-p {
-  margin: 0.5em 0;
-}
-
-/* Images */
-
-img {
-  max-width: 100%;
-  height: auto;
-}
-
-/* Lists */
-
-ul {
-  list-style: none;
-  padding: 0;
-}
-
-li {
-  margin: 0.25em 0;
-}
-
-/* Buttons */
-
-button {
-  background-color: #4CAF50;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #3e8e41;
-}
-
-/* Forms */
-
-form {
-  margin: 1em 0;
-}
-
-label {
-  display: block;
-  margin-bottom: 0.5em;
-}
-
-input[type="text"], textarea {
-  width: 100%;
-  padding: 0.5em;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-textarea {
-  resize: vertical;
-}
-
-/* Layout Grid (Example) */
-
-.w-container {
-  max-width: 800px;
-  margin: 0 auto;
+.container {
+  text-align: center;
   padding: 20px;
 }
 
-.w-row {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0 -15px;
-}
-
-.w-col-1,
-.w-col-2,
-.w-col-3,
-.w-col-4,
-.w-col-5,
-.w-col-6,
-.w-col-7,
-.w-col-8,
-.w-col-9,
-.w-col-10,
-.w-col-11,
-.w-col-12 {
-  padding: 0 15px; /* Fix: remove extra space before curly brace */
-}
+.title {
+  color: #fff; /*
